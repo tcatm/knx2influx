@@ -80,6 +80,7 @@ typedef struct __config
 	char *database;
 	char *user;
 	char *password;
+	char *token;
 	bool dryrun;
 	knxnet::address_t physaddr;
 	ga_t *gas[UINT16_MAX];
