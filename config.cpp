@@ -416,6 +416,12 @@ int parse_config(config_t *config, void (*periodic_read_fkt)(knx_timer_t *timer)
 		config->password = strdup(obj1->valuestring);
 	}
 
+	obj1 = cJSON_GetObjectItemCaseSensitive(json, "token");
+	if (obj1 && cJSON_IsString(obj1) && (obj1->valuestring != NULL))
+	{
+		config->token = strdup(obj1->valuestring);
+	}
+
 	// Sender tags
 	obj1 = cJSON_GetObjectItemCaseSensitive(json, "sender_tags");
 	// sender_tags is optional

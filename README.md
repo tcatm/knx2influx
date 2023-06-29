@@ -33,6 +33,8 @@ Minimal config is:
 
 `host` and `database` describe the connection to InfluxDB.
 
+Optional parameter `token` can be set to an InfluxDB authentication token for use with token-based authorization.
+
 `gas` is a list of objects and describes, which group addresses should be monitored and what type the data has. The syntax is:
 
 ```json

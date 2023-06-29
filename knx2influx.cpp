@@ -89,6 +89,14 @@ static void post(char const *data)
 		curl_easy_setopt(handle, CURLOPT_CUSTOMREQUEST, "POST");
 		curl_easy_setopt(handle, CURLOPT_TCP_KEEPALIVE, 1L);
 		curl_easy_setopt(handle, CURLOPT_WRITEFUNCTION, curl_write_data);
+
+		if (config.token != nullptr) {
+			struct curl_slist *headers = NULL;
+			char token_header[1024] = "Authorization: Token ";
+			strcat(token_header, config.token);
+			headers = curl_slist_append(headers, token_header);
+			curl_easy_setopt(handle, CURLOPT_HTTPHEADER, headers);
+		}
 	}
 
 	curl_easy_setopt(handle, CURLOPT_POSTFIELDS, data);
